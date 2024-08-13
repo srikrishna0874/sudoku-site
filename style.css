@@ -1,0 +1,73 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logo {
+    margin: 30px 30px;
+}
+
+
+
+
+.board-bg {
+    background-color: #FFEEE9;
+    width: 60vw;
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+table {
+    margin: 10px 0px;
+    border-spacing: 0;
+    border: 3px solid black;
+    border-collapse: collapse;
+}
+
+tr:nth-child(3n) td{
+    border-bottom: 3px solid black;
+}
+
+tr td:nth-child(3n) {
+    border-right: 3px solid black;
+}
+
+td {
+    border: 1px solid black;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+}
+
+.digit-buttons {
+
+
+    display: flex;
+
+}
+
+.digit-buttons button {
+    margin: 0px 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+    background-color: #897766;
+    color: white;
+    font-weight: 600;
+}
+
+.digit-buttons button:hover {
+    background-color: #6b5f4d;
+    transition: 0.3s ease-in-out;
+}
