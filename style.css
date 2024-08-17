@@ -2,6 +2,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: #f2f8fc;
 }
 
 .logo {
@@ -42,6 +43,11 @@ td {
     width: 35px;
     height: 35px;
     cursor: pointer;
+}
+
+.active-cell {
+    border: 3px solid rgb(255, 130, 47);
+    box-shadow: inset 0 0 5px rgb(255, 130, 47);
 }
 
 .digit-buttons {
