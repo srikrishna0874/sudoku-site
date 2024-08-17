@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sudoku</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <div class="logo"><h1>THE SUDOKU GAME</h1></div>
+    <div class="logo">
+        <h1>THE SUDOKU GAME</h1>
+    </div>
     <div class="board-bg">
         <table id="sudoku-table">
             <tr>
@@ -111,20 +115,21 @@
             </tr>
         </table>
         <div class="digit-buttons">
-            <button>1</button>
-            <button>2</button>
-            <button>3</button>
-            <button>4</button>
-            <button>5</button>
-            <button>6</button>
-            <button>7</button>
-            <button>8</button>
-            <button>9</button>
+            <button onclick="digitButton(1)">1</button>
+            <button onclick="digitButton(2)">2</button>
+            <button onclick="digitButton(3)">3</button>
+            <button onclick="digitButton(4)">4</button>
+            <button onclick="digitButton(5)">5</button>
+            <button onclick="digitButton(6)">6</button>
+            <button onclick="digitButton(7)">7</button>
+            <button onclick="digitButton(8)">8</button>
+            <button onclick="digitButton(9)">9</button>
         </div>
     </div>
 
-    
+
 
     <script src="script.js"></script>
 </body>
+
 </html>
