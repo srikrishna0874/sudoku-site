@@ -13,6 +13,7 @@ for (let i = 0; i < tdElements.length; i++) {
         for (let j = 0; j < tdElements.length; j++) {
             tdElements[j].classList.remove('active-cell');
         }
+        
         tdElements[i].classList.add('active-cell');
         selectedTdIndex = i;
         console.log(selectedTdIndex);
@@ -113,9 +114,29 @@ function generateNewSudokePuzzle() {
     function fillSudokuGrid() {
         solveSudoku();
         console.log(sudoku_grid);
+
+        //easy
+
+        for (let i = 0; i < 60; i++) {
+            const r = Math.floor(Math.random() * 9);
+            const c = Math.floor(Math.random() * 9);
+            sudoku_grid[r][c] = 0;
+        }
+
+        console.log(sudoku_grid);
     }
 
     fillSudokuGrid();
+    for (let i = 0; i < 9; i++) {
+        for (let j = 0; j < 9; j++) {
+            if (sudoku_grid[i][j] != 0) {
+                tdElements[9 * i + j].innerText = sudoku_grid[i][j];
+                tdElements[9 * i + j].style.fontWeight = 600;
+                tdElements[9 * i + j].style.cursor = 'context-menu';
+            }
+        }
+    }
+
 
 
 }
