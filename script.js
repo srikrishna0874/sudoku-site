@@ -5,18 +5,31 @@ console.log(tdElements.length);
 
 var selectedTdIndex = 0;
 
+const sudoku_grid = Array.from({ length: 9 }, () => Array(9).fill(0));
+
+const real_sudoku_grid = Array.from({ length: 9 }, () => Array(9).fill(0));
+
 
 
 for (let i = 0; i < tdElements.length; i++) {
     tdElements[i].addEventListener('click', () => {
         // console.log(tdElements[i]);
-        for (let j = 0; j < tdElements.length; j++) {
-            tdElements[j].classList.remove('active-cell');
+        const row = Math.floor(i / 9);
+        const col = i % 9;
+
+        console.log(row,col);
+        console.log(sudoku_grid);
+
+        if (sudoku_grid[row][col] == 0) {
+            for (let j = 0; j < tdElements.length; j++) {
+                tdElements[j].classList.remove('active-cell');
+            }
+
+            tdElements[i].classList.add('active-cell');
+            selectedTdIndex = i;
+            console.log(selectedTdIndex);
         }
-        
-        tdElements[i].classList.add('active-cell');
-        selectedTdIndex = i;
-        console.log(selectedTdIndex);
+
     });
 }
 
@@ -25,16 +38,59 @@ function digitButton(digit) {
     console.log('clicked button is:' + digit);
     if (tdElements[selectedTdIndex].innerText == digit) {
         tdElements[selectedTdIndex].innerText = '';
+        tdElements[selectedTdIndex].classList.remove('wrong-cell');
     }
     else {
+        const row = Math.floor(selectedTdIndex / 9);
+        const col = selectedTdIndex % 9;
+
         tdElements[selectedTdIndex].innerText = digit;
+        if(!isValidPlace(row,col,digit)) {
+            tdElements[selectedTdIndex].classList.remove('active-cell');
+            tdElements[selectedTdIndex].classList.add('wrong-cell');
+        }
     }
 }
 
+function isValidPlace(row, col, num) {
+    //check row
+
+    for (let i = 0; i < 9; i++) {
+        if (sudoku_grid[row][i] == num) {
+            return false;
+        }
+
+    }
+
+    //check column
+
+    for (let i = 0; i < 9; i++) {
+        if (sudoku_grid[i][col] == num) {
+            return false;
+        }
+    }
+
+
+    //check 3x3 grid
+
+    const gridStartRow = row - row % 3;
+    const gridStartCol = col - col % 3;
+
+    for (let i = gridStartRow; i < gridStartRow + 3; i++) {
+        for (let j = gridStartCol; j < gridStartCol + 3; j++) {
+            if (sudoku_grid[i][j] == num) {
+                return false;
+            }
+        }
+    }
+    return true;
+
+
+}
 
 function generateNewSudokePuzzle() {
 
-    const sudoku_grid = Array.from({ length: 9 }, () => Array(9).fill(0));
+
 
 
     function shuffle(array) {
@@ -47,41 +103,7 @@ function generateNewSudokePuzzle() {
         return array;
     }
 
-    function isValidPlace(row, col, num) {
-        //check row
-
-        for (let i = 0; i < 9; i++) {
-            if (sudoku_grid[row][i] == num) {
-                return false;
-            }
-
-        }
-
-        //check column
-
-        for (let i = 0; i < 9; i++) {
-            if (sudoku_grid[i][col] == num) {
-                return false;
-            }
-        }
-
-
-        //check 3x3 grid
-
-        const gridStartRow = row - row % 3;
-        const gridStartCol = col - col % 3;
-
-        for (let i = gridStartRow; i < gridStartRow + 3; i++) {
-            for (let j = gridStartCol; j < gridStartCol + 3; j++) {
-                if (sudoku_grid[i][j] == num) {
-                    return false;
-                }
-            }
-        }
-        return true;
-
-
-    }
+    
 
 
     function solveSudoku() {
@@ -113,6 +135,7 @@ function generateNewSudokePuzzle() {
 
     function fillSudokuGrid() {
         solveSudoku();
+        //real_sudoku_grid=sudoku_grid;
         console.log(sudoku_grid);
 
         //easy
