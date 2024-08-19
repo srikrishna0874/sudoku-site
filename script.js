@@ -38,7 +38,9 @@ function digitButton(digit) {
     console.log('clicked button is:' + digit);
     if (tdElements[selectedTdIndex].innerText == digit) {
         tdElements[selectedTdIndex].innerText = '';
+        if(tdElements[selectedTdIndex].classList.contains('wrong-cell')) {}
         tdElements[selectedTdIndex].classList.remove('wrong-cell');
+        tdElements[selectedTdIndex].classList.add('active-cell');
     }
     else {
         const row = Math.floor(selectedTdIndex / 9);
