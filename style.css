@@ -100,7 +100,11 @@ td {
 .digit-buttons {
 
 
-    display: flex;
+    display: inline-flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
 
 }
 
