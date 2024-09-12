@@ -136,7 +136,15 @@ td {
     transition: 0.3s ease-in-out;
 }
 
+i {
+    font-size: 20px;
+    color: red;
+}
 
+.intro span b {
+    font-weight: 900;
+    color: green;
+}
 
 
 @media only screen and (max-width:600px) {
@@ -156,3 +164,5 @@ td {
         width: 100vw;
     }
 }
+
+
