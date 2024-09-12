@@ -16,15 +16,22 @@ body {
     width: 60vw;
     height: 70vh;
     position: absolute;
-    background-color: rgb(255,255,255,0.7);
+    background-color: rgb(255, 255, 255, 0.7);
     transition: 0.3s ease-in-out;
     display: flex;
-    align-items: center; 
+    align-items: center;
     justify-content: center;
     flex-direction: column;
     display: none;
-    
-}  
+
+}
+
+.active-game-over-board {
+    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
 .game-over-box h1 {
     font-size: 40px;
@@ -68,7 +75,7 @@ table {
     border-collapse: collapse;
 }
 
-tr:nth-child(3n) td{
+tr:nth-child(3n) td {
     border-bottom: 3px solid black;
 }
 
@@ -83,7 +90,7 @@ td {
     cursor: pointer;
     text-align: center;
     font-size: 20px;
-    
+
 }
 
 .active-cell {
@@ -93,7 +100,7 @@ td {
 
 .wrong-cell {
     border: 3px solid red;
-        box-shadow: inset 0 0 8px red;
+    box-shadow: inset 0 0 8px red;
 }
 
 
@@ -129,3 +136,23 @@ td {
     transition: 0.3s ease-in-out;
 }
 
+
+
+
+@media only screen and (max-width:600px) {
+    .board-bg {
+        width: 100vw;
+    }
+
+    table {
+        padding: 10px;
+    }
+
+    .digit-buttons {
+        display: inline-flex;
+    }
+
+    .game-over-box {
+        width: 100vw;
+    }
+}
