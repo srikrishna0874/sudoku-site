@@ -6,7 +6,9 @@ const tdElements = document.getElementsByTagName('td');
 
 console.log(tdElements.length);
 
-var selectedTdIndex = 0;
+var selectedTdIndex = -1;
+
+var remWrongAttempts = 3;
 
 
 
@@ -22,6 +24,13 @@ function assignSudokuToAnotherArray(arr) {
     return b;
 }
 
+
+function placeWrongAttemptsCount(count) {
+    const element = document.getElementById('wrongAttemptsContent');
+    element.innerText = count;
+
+}
+
 function placeSudokuDigitsInTable(grid) {
     for (let i = 0; i < 9; i++) {
         for (let j = 0; j < 9; j++) {
@@ -33,7 +42,7 @@ function placeSudokuDigitsInTable(grid) {
                 tdElements[tdIndex].style.color = 'brown';
             }
             else {
-
+                tdElements[tdIndex].innerText = '';
             }
         }
     }
@@ -55,6 +64,7 @@ for (let i = 0; i < 60; i++) {
 }
 
 placeSudokuDigitsInTable(sudoku_grid);
+placeWrongAttemptsCount(3);
 
 // console.log('after placing zeroes: ');
 // console.log('correct sudoku grid is:');
@@ -103,6 +113,16 @@ function digitButton(digit) {
         if (correctSudokuBoard[row][col] != digit) {
             tdElements[selectedTdIndex].classList.remove('active-cell');
             tdElements[selectedTdIndex].classList.add('wrong-cell');
+            remWrongAttempts--;
+            placeWrongAttemptsCount(remWrongAttempts);
+            if (remWrongAttempts == 0) {
+                console.log('game over');
+                const cont = document.getElementsByClassName('game-over-box');
+                const gameBreakingTitle = document.getElementById('text-for-breaking-game');
+                gameBreakingTitle.innerText = 'You Lost!!';
+                cont[0].classList.add('active-game-over-board');
+            }
+            
         }
         else {
             if (tdElements[selectedTdIndex].classList.contains('wrong-cell')) {
@@ -112,6 +132,8 @@ function digitButton(digit) {
             if (isGameCompleted()) {
                 console.log('game over');
                 const cont = document.getElementsByClassName('game-over-box');
+                const gameBreakingTitle = document.getElementById('text-for-breaking-game');
+                gameBreakingTitle.innerText='You Win!!';
                 cont[0].classList.add('active-game-over-board');
             }
         }

@@ -4,17 +4,16 @@ body {
     align-items: center;
     background-color: #f2f8fc;
     font-family: 'Courier New', Courier, monospace;
+    overflow: hidden;
 }
 
-.logo {
-    margin: 30px 30px;
-}
+
 
 
 .game-over-box {
     z-index: 1;
     width: 60vw;
-    height: 70vh;
+    height: 80vh;
     position: absolute;
     background-color: rgb(255, 255, 255, 0.7);
     transition: 0.3s ease-in-out;
@@ -59,7 +58,7 @@ body {
     z-index: 0;
     background-color: #FFEEE9;
     width: 60vw;
-    height: 70vh;
+    height: 80vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -145,6 +144,49 @@ i {
     font-weight: 900;
     color: green;
 }
+
+
+.required-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-top: 18px;
+    
+}
+
+.required-buttons button {
+    cursor: pointer;
+    border-radius: 8px;
+    width: 30%;
+    height: 30px;
+    font-weight: 600;
+    background-color: #6b5f4d;
+    color: white;
+    border: none;
+}
+
+.required-buttons button:hover {
+    background-color: white;
+    color: #6b5f4d;
+    transition: 0.3s ease-in-out;
+    border: 2px solid #6b5f4d;
+}
+
+.wrong-attempts-suggestion {
+    padding: 0;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+#wrongAttemptsContent {
+    color: red;
+}
+
 
 
 @media only screen and (max-width:600px) {
